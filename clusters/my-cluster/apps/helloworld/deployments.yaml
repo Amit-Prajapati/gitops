@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bred-helloworld
+  namespace: helloworld
+spec:
+  selector:
+    matchLabels:
+      app: bred-helloworld
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: bred-helloworld
+    spec:
+      containers:
+      - name: bred-helloworld
+        image: artifactory.bre.mcd.com/docker/bred-helloworld:91
+        ports:
+        - containerPort: 9000
+          name: bred-helloworld
+        resources:
+          limits:
+            cpu: "400m"
+            memory: "400Mi"
+          requests:
+            cpu: "100m"
+            memory: "200Mi"
+        securityContext:
+          allowPrivilegeEscalation: false
+          privileged: false
+          runAsNonRoot: true
+          runAsUser: 1001
