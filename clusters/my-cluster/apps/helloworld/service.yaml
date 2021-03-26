@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bred-helloworld
+  resourceVersion: "0"
+  namespace: helloworld
+spec:
+  selector:
+    app: bred-helloworld
+  ports:
+  - port: 9000
