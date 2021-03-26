@@ -1,0 +1,14 @@
+kind: Ingress
+apiVersion: extensions/v1beta1
+metadata:
+  name: bred-helloworld
+  namespace: helloworld
+spec:
+  rules:
+    - host: bred-helloworld.bre.mcd.com
+      http:
+        paths:
+          - path: /bar
+            backend:
+              serviceName: bred-helloworld
+              servicePort: 80
